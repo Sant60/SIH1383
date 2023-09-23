@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Schedule an Appointment - Hospitaly</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+      /* Updated CSS with spacing */
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+
+      .schedule-container {
+        max-width: 600px;
+        margin: 30px auto; /* Adjusted margin for spacing */
+        padding: 40px;
+        background-color: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+
+      .back-button {
+        text-decoration: none;
+        font-size: 1.2em;
+        color: #3498db;
+        margin-bottom: 20px; /* Added margin for spacing */
+        display: inline-block;
+      }
+
+      .back-button:hover {
+        color: #2980b9;
+      }
+
+      .schedule-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .schedule-header h1 {
+        font-size: 2em;
+        margin: 0;
+        color: #3498db;
+      }
+
+      .schedule-section label {
+        display: block;
+        font-size: 1.2em;
+        margin-bottom: 5px;
+      }
+
+      .schedule-section input {
+        width: calc(100% - 20px); /* Adjusted width for spacing */
+        padding: 10px;
+        font-size: 1em;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+
+      .schedule-submit-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 22px 14rem;
+      }
+      .navli {
+        color: white;
+        width: 20vw;
+        height: 100vh;
+        margin: 100px 0 0 0;
+        /* background: rgb(87, 37, 250); */
+      }
+      .navli li {
+        padding: 39px 0 0 39px;
+        font-size: 27px;
+        cursor: pointer;
+        /* background: rgb(29, 27, 27); */
+        text-align: center;
+        position: relative;
+        width: 265px;
+        height: 50px;
+        margin: 0 0 0 18px;
+        display: inline-flex;
+        /* padding-right: 39px; */
+        /* border: 2px solid white; */
+      }
+      .navli li:hover {
+        border: 2px solid white;
+        /* background: rgb(51, 10, 119); */
+      }
+      .navli li i {
+        margin: 0 0 0 10px;
+      }
+      .schedule-submit-button:hover {
+        background-color: #2980b9;
+      }
+      .right {
+        width: 78vw;
+        height: 97vh;
+        background: rgb(229, 226, 226);
+        margin: -45% 0 0 21vw;
+        opacity: 0;
+        /* position: fixed;
+        top: 68px;
+        left: -250px;
+        z-index: 2; */
+        border-radius: 20px;
+        transform: translate(100%, -50%) scale(0);
+        transition: transform 1s, top 1s;
+        /* position: fixed; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="schedule-container">
+      <a href="/" class="back-button">&larr; Back</a>
+
+      <header class="schedule-header">
+        <h1>Schedule an Appointment</h1>
+        <p>Please fill in the details below to schedule your appointment.</p>
+      </header>
+
+      <section class="schedule-section">
+        <form id="scheduleForm">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your Name"
+            required
+          />
+
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your Email"
+            required
+          />
+
+          <label for="date">Preferred Date:</label>
+          <input type="date" id="date" name="date" required />
+
+          <button type="submit" class="schedule-submit-button">Schedule</button>
+        </form>
+      </section>
+    </div>
+
+    <script>
+      // JavaScript for form submission and redirection
+      document
+        .getElementById("scheduleForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          // Perform form validation here (e.g., check if fields are not empty)
+
+          // Simulating a successful form submission and redirecting to the home page after 3 seconds
+          setTimeout(function () {
+            alert(
+              "Appointment scheduled successfully! Redirecting to home page."
+            );
+            window.location.href = "/";
+          }, 3000);
+        });
+      const dashboard = document.querySelector(".right");
+      const dashtext = document.querySelector("#dashtext");
+      const doctorsdiv = document.querySelector(".wrapper");
+      const colleagues = document.querySelector("#doctors");
+      const home = document.querySelector("#home");
+      const maindash = document.querySelector(".main");
+
+      dashtext.addEventListener("click", function () {
+        dashboard.classList.toggle("active");
+        doctorsdiv.classList.remove("active");
+        dashboard.style.opacity = "1";
+        maindash.style.opacity = "0";
+      });
+      colleagues.addEventListener("click", function () {
+        doctorsdiv.classList.toggle("active");
+        dashboard.classList.remove("active");
+        doctorsdiv.style.opacity = "1";
+        maindash.style.opacity = "0";
+      });
+      home.addEventListener("click", function () {
+        doctorsdiv.classList.remove("active");
+        dashboard.classList.remove("active");
+        maindash.style.opacity = "1";
+      });
+    </script>
+  </body>
+</html>
